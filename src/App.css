@@ -7,6 +7,9 @@
   background-color: hsl(235, 18%, 26%);
 }
 
-@media(width: 767px){
-  
+@media(max-width: 767px){
+  #root{
+    background-color: #fff;
+    border-radius: 0;
+  }
 }

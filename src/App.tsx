@@ -4,6 +4,7 @@ import illustration_mobile from "./assets/images/illustration-sign-up-mobile.svg
 import icon_list from "./assets/images/icon-list.svg";
 import icon_success from "./assets/images/icon-success.svg";
 import { useState } from "react";
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 
 function App() {
   // Email Fucntions
@@ -23,18 +24,20 @@ function App() {
       return;
     }
     setIsSubscribed(true);
+    
   };
 
   const dismissHandle =  () =>{
-
+    setIsSubscribed(false);
+    return ;
   }
 
   return (
     <>
       {/* flex flex-row justify-evenly p-5 */}
-      <body className="flex justify-center py-0">
+      <body className="flex justify-center py-0 max-md:flex-col   ">
       {!isSubscribed ?(
-        <div className=" bg-White rounded-[12px] flex">
+        <div className=" bg-White rounded-[12px] flex max-md:flex-col-reverse">
         <div className="my-10 mx-4 ">
           <h1 className="text-4xl py-4 font-roboto text-Dark-Slate-Grey font-bold">
             {" "}
@@ -95,13 +98,14 @@ function App() {
         </div>
       </div>
       ):(
-        <div className="bg-White flex flex-col rounded-[24px] p-8 w-3/12">
-          <img className="size-14" src={icon_success} alt="icon_success" />
-          <h1 className="text-4xl py-4 font-roboto text-Dark-Slate-Grey font-bold">Thanks for subscribing!</h1>
-          <p className="text-balance">a confirmation email has been send to <span className="font-bold">emailexample@gmail.com</span>. Please open it and click the button inside to confirm you subscription.</p>
-          <button className="text-White bg-Dark-Slate-Grey my-4 rounded-[16px] h-12 font-roboto font-normal hover:bg-tomate transition duration-300" onClick={dismissHandle}>Dismiss message</button>
+        <div className="bg-White flex flex-col rounded-[24px] p-8 w-3/12 max-md:w-auto max-md:rounded-[0] ">
+          <img className="size-14 max-md:mb-4" src={icon_success} alt="icon_success" />
+          <h1 className="text-4xl py-4 font-roboto text-Dark-Slate-Grey font-bold max-md:justify-self-start max-md:text-left max-md:mb-4">Thanks for subscribing!</h1>
+          <p className="text-balance max-md:text-left max-md:mb-4">a confirmation email has been send to <span id="currentEmail" className="font-bold ">{email}</span>. Please open it and click the button inside to confirm you subscription.</p>
+          <button className="text-White bg-Dark-Slate-Grey my-4 rounded-[16px] h-12 font-roboto font-normal hover:bg-tomate transition duration-300 max-md:mt-40" onClick={dismissHandle}>Dismiss message</button>
         </div>
       )}
+      
       </body>
     </>
   );
