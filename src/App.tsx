@@ -1,9 +1,8 @@
 import "./App.css";
 import illustration from "./assets/images/illustration-sign-up-desktop.svg";
 import illustration_mobile from "./assets/images/illustration-sign-up-mobile.svg";
-import icon_list from "./assets/images/icon-list.svg";
 import icon_success from "./assets/images/icon-success.svg";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>;
 
 function App() {
@@ -12,7 +11,7 @@ function App() {
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isSubscribed, setIsSubscribed] = useState(false); //começa falso pq nenhum email entra no site ja cadastrado
 
-  const handleEmailChange = (e) => {
+  const handleEmailChange = (e: { target: { value: SetStateAction<string>; }; }) => {
     setEmail(e.target.value);
     setIsValidEmail(true); // Resetar o estado de validade do email sempre que o usuário digitar algo
   };
